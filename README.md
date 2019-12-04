@@ -2,18 +2,30 @@
 
 gulp-qc-iconfont是一个[gulp](https://github.com/wearefractal/gulp)插件，可以轻松地帮你将[阿里icon](https://www.iconfont.cn/)的图标项目下载至本地。
 
-## Usage
+## Install
 ```
-gulpQcIconFont({
-  url: '//at.alicdn.com/t/font_xxxxxxx_xxxxxx.css',
-  isDev: true,
-  fontPath: './iconfont/iconfont',
-  iconPrefix: '.cu-icon-',
-  keepIconFontStyle: false,
-  fontExt: ['.eot', '.ttf', '.svg', '.woff', '.woff2']
-}).pipe(gulp.dest('./dist/'))
+$ npm install gulp-qc-iconfont
 ```
 
+## Usage
+
+```
+var gulp = require('gulp');
+var gulpQcIconFont = require('gulp-qc-iconfont');
+
+gulp.task('default', () => {
+  gulpQcIconFont({
+    url: '//at.alicdn.com/t/font_xxxxxxx_xxxxxx.css',
+    isDev: true,
+    fontPath: './iconfont/iconfont',
+    iconPrefix: '.cu-icon-',
+    keepIconFontStyle: false,
+    fontExt: ['.eot', '.ttf', '.svg', '.woff', '.woff2']
+  }).pipe(gulp.dest('./dist/'))
+});
+```
+
+### Options
 | 参数 | 类型 | 描述 |
 -|-|-
 |``url``| String | 必须，阿里我的图标项目中获取的css代码url |
@@ -24,15 +36,21 @@ gulpQcIconFont({
 |``fontExt``| Array | 可选，默认全部下载，需要下载的字体图标格式扩展名，只有在 ``isDev`` 为false时有效
 
 ## 开发模式下：
-- 将自动获取css源文件保存至指定位置，如定义 ``iconPrefix`` ，则会自动批量替换源文件的前缀 ``.icon-`` 为设定的前缀。 如：
+> 将自动获取css源文件保存至指定位置，如定义 ``iconPrefix`` ，则会自动批量替换源文件的前缀 ``.icon-`` 为设定的前缀。
+### Gulpfile
 ```
-gulpQcIconFont({
-  url: '//at.alicdn.com/t/font_xxxxxxx_xxxxxx.css'
-}).pipe(gulp.dest('./dist/'))
+var gulp = require('gulp');
+var gulpQcIconFont = require('gulp-qc-iconfont');
+
+gulp.task('default', () => {
+  gulpQcIconFont({
+    url: '//at.alicdn.com/t/font_xxxxxxx_xxxxxx.css'
+  }).pipe(gulp.dest('./dist/'))
+});
 ```
 
+### Output:
 将在 ``dist`` 文件夹下输出 ``iconfont.css`` 文件，生成结构如下：
-
 ```
 @font-face {font-family: "iconfont";
   src: url('//at.alicdn.com/t/font_xxxxxxx_xxxxxx.eot?t=xxx');
@@ -48,9 +66,11 @@ gulpQcIconFont({
 ```
 
 ## 非开发模式下：
-- 将自动获取css源文件保存至指定位置，并将图标引用路径自动更改为``fontPath``本地路径，如定义``iconPrefix``，则会自动批量替换源文件的前缀``.icon-``为设定的前缀。
-- 将自动获取字体图标需要的文件保存至指定位置下的``fontPath``路径中
-- 如：
+> 将自动获取css源文件保存至指定位置，并将图标引用路径自动更改为``fontPath``本地路径，如定义``iconPrefix``，则会自动批量替换源文件的前缀``.icon-``为设定的前缀。
+
+> 将自动获取字体图标需要的文件保存至指定位置下的``fontPath``路径中
+
+### Gulpfile
 ```
 gulpQcIconFont({
   url: '//at.alicdn.com/t/font_xxxxxxx_xxxxxx.css',
@@ -58,6 +78,8 @@ gulpQcIconFont({
   iconPrefix: '.cu-icon-'
 }).pipe(gulp.dest('./dist/'))
 ```
+
+### Output:
 将在``dist``文件夹下输出如下文件：
 ```
 - dist
