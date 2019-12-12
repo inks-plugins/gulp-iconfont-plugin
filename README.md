@@ -7,6 +7,9 @@ gulp-qc-iconfont是一个[gulp](https://github.com/wearefractal/gulp)插件，�
 $ npm install gulp-qc-iconfont
 ```
 
+## 该插件提供 webpack4.X 插件版
+- [webpack-qc-iconfont-plugin](https://github.com/qc-web-y/webpack-qc-iconfont-plugin)
+
 ## Usage
 
 ```
