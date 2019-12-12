@@ -1,6 +1,6 @@
 {
   "name": "gulp-qc-iconfont",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "gulp-qc-iconfont是一个gulp插件，可以轻松地帮你将阿里icon的图标项目下载至本地",
   "main": "src/index.js",
   "scripts": {
@@ -15,7 +15,10 @@
     "request": "^2.88.0",
     "through": "^2.3.8"
   },
-  "keywords": ["gulp", "iconfont"],
+  "keywords": [
+    "gulp",
+    "iconfont"
+  ],
   "homepage": "https://github.com/qc-web-y/gulp-qc-iconfont",
   "repository": {
     "type": "git",
