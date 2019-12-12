@@ -26,17 +26,39 @@ gulp.task('default', () => {
 ```
 
 ### Options
-| 参数 | 类型 | 描述 |
--|-|-
-|``url``| String | 必须，阿里我的图标项目中获取的css代码url |
-|``isDev``| Boolean | 可选，默认为 ``true`` ，是否开发环境
-|``fontPath``| String | 可选，默认为 ``'./iconfont/iconfont'`` ,字体图标保存路径，只有在 ``isDev`` 为false时有效
-|``iconPrefix``| String | 可选，默认与源文件保持一致，字体图标统一前缀，如设置为'.cu-icon-',则图标调用为：``<i class="cu-icon-XXX"></i>``
-|``keepIconFontStyle``| Boolean | 可选，保留css源文件中的 ``.iconfont{/*...*/}`` 中的样式
-|``fontExt``| Array | 可选，默认全部下载，需要下载的字体图标格式扩展名，只有在 ``isDev`` 为false时有效
+- ``url``
+  - 类型：String
+  - 默认：无，该参数是必须（没有将会报错）
+  - 描述：为阿里图标中 - 我的图标项目 - 中获取的css代码url
+
+- ``isDev``
+  - 类型：String，
+  - 默认：``true``
+  - 描述：当前是否为开发模式
+
+- ``fontPath``
+  - 类型：String
+  - 默认：``'./iconfont/iconfont'``
+  - 描述：下载的字体图标文件保存路径，只有在 ``isDev`` 为false，也就是生产环境才有效
+
+- ``iconPrefix``
+  - 类型：String
+  - 默认：与源文件保持一致 ``.icon-``
+  - 描述：字体图标统一前缀，如设置为 ``{ iconPrefix: '.cu-icon-' }``,则图标调用为：``<i class="iconfont cu-icon-XXX"></i>``
+
+- ``keepIconFontStyle``
+  - 类型：Boolean
+  - 默认：undefined，即未开启，不保留
+  - 描述：是否保留css源文件中的 ``.iconfont{/*...*/}`` 中的样式，该属性多用于与vant等类似已有自己字体图标相关初始设置的组件库配合使用，如您没有与类似组件使用，建议开启或自定义一个，否则您的图标将不会有初始样式
+
+- ``fontExt``
+  - 类型：Array
+  - 默认：['.eot', '.ttf', '.svg', '.woff', '.woff2'] ，即全部下载
+  - 描述：需要下载的字体图标格式扩展名，只有在 ``isDev`` 为false时有效
 
 ## 开发模式下：
 > 将自动获取css源文件保存至指定位置，如定义 ``iconPrefix`` ，则会自动批量替换源文件的前缀 ``.icon-`` 为设定的前缀。
+
 ### Gulpfile
 ```
 var gulp = require('gulp');
@@ -95,12 +117,12 @@ gulpQcIconFont({
 ``iconfont.css`` 生成结构如下：
 ```
 @font-face {font-family: "iconfont";
-  src: url('./iconfont/iconfont.eot?t=xxx'); /* IE9 */
-  src: url('./iconfont/iconfont.eot?t=xxx#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  src: url('./iconfont/iconfont.eot?t=xxx');
+  src: url('./iconfont/iconfont.eot?t=xxx#iefix') format('embedded-opentype'),
   url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgA...') format('woff2'),
   url('./iconfont/iconfont.woff?t=xxx') format('woff'),
-  url('./iconfont/iconfont.ttf?t=xxx') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
-  url('./iconfont/iconfont.svg?t=xxx#iconfont') format('svg'); /* iOS 4.1- */
+  url('./iconfont/iconfont.ttf?t=xxx') format('truetype'),
+  url('./iconfont/iconfont.svg?t=xxx#iconfont') format('svg');
 }
 .cu-icon-waimai1:before {
   content: "\e6c3";

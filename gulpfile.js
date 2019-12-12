@@ -1,6 +1,6 @@
 // 引入npm资源
 var gulp = require('gulp');
-var gulpQcIconFont = require('./index')
+var gulpQcIconFont = require('./src/index')
 var del = require('del');
 
 // 清理输出文件夹
