@@ -1,19 +1,17 @@
-// 引入npm资源
+// gulp-qc-icon 插件测试
 var gulp = require('gulp');
-var gulpQcIconFont = require('./src/index')
+var gulpQcIconFont = require('./lib/index')
 var del = require('del');
 
-// 清理输出文件夹
-gulp.task('clean-dist', (done) => {
-  return del(['dist/**/*'], done);
+gulp.task('clean', (done) => {
+  return del(['test/**/*'], done);
 });
 
-// 插件测试
-gulp.task('test-plugin', () => {
+gulp.task('qcIconTest', () => {
   return gulpQcIconFont({
     url: '//at.alicdn.com/t/font_1425510_3v068prmkkw.css',
     isDev: false
-  }).pipe(gulp.dest('./dist/'));
+  }).pipe(gulp.dest('./test/'));
 });
 
-gulp.task('default', gulp.series('clean-dist', gulp.parallel('test-plugin')))
+gulp.task('default', gulp.series('clean', gulp.parallel('qcIconTest')))

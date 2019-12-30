@@ -1,5 +1,8 @@
-dist
+.git
+test
 node_modules
+package-lock.json
+gulpfile.js
 
 # local env files
 .env.local

@@ -1,8 +1,8 @@
 const through = require('through');
 const request = require('request')
 const gulpUtil = require('gulp-util');
-const PluginError = gulpUtil.PluginError;
 
+const PluginError = gulpUtil.PluginError;
 const PLUGIN_NAME = 'gulp-qc-iconfont';
 
 function gulpQcIconfont(options) {
